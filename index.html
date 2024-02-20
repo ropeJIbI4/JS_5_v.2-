@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шутка про Чака Норриса</title>
+</head>
+<body>
+    <div class="joke"></div>
+
+    <script src="data.js"></script>
+    <script>
+    const joke = data;
+
+    function displayJoke(){
+        const container = document.querySelector('.joke')
+        container.innerHTML = `<img src="${joke.icon_url}" alt="Аватар Чака Норриса" class="avatar"> <p>${joke.value}</p>`;
+    }
+    function displayJokerandom(){
+        const container = document.querySelector('.joke')
+        fetch('https://api.chucknorris.io/jokes/random')
+            .then(response => response.json())
+            .then(data => {
+                container.innerHTML = `<img src="${data.icon_url}" alt="Аватар Чака Норриса" class="avatar"> <p>${data.value}</p>`;
+            })
+    }
+    displayJoke();
+    // displayJokerandom();
+
+    </script>
+</body>
+</html>
